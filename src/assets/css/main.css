@@ -1,0 +1,115 @@
+@import "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    @apply bg-bg1 text-ccc;
+}
+
+/*@layer utilities {*/
+/*    .text-balance {*/
+/*        text-wrap: balance;*/
+/*    }*/
+/*}*/
+
+.qs-main{
+    @apply w-full h-auto;
+}
+.qs-main__inner{
+    @apply h-full min-h-screen p-3 flex flex-col;
+}
+
+.qs-nav{
+    @apply w-full bg-bg2 rounded-[4px] flex items-center justify-between;
+}
+.qs-nav__item{
+    @apply px-5 py-3 border-r border-white/10 last:border-none;
+}
+.qs-nav__item--menu{
+    @apply flex-1
+}
+
+.qs-nav-menu{
+    @apply w-full inline-flex items-center justify-end gap-8;
+}
+.qs-nav-menu__item-link{
+    @apply text-sm text-primary-50 relative;
+    @apply flex items-center justify-center;
+}
+.qs-nav-menu__item-link.active{
+    @apply text-secondary;
+}
+.qs-nav-menu__item-link:after{
+    @apply h-[2px] w-1/2 rounded bg-transparent;
+    @apply absolute -bottom-[6px];
+}
+.active.qs-nav-menu__item-link:after{
+    @apply content-[""] bg-secondary;
+}
+.qs-nav__user{
+    @apply flex items-center justify-center gap-3;
+}
+.qs-nav__user-name{
+    @apply whitespace-nowrap text-sm font-[600]
+}
+.qs-nav__user-icon{
+    @apply size-7 text-primary-50 ml-[14px]
+}
+
+/*qs-breadcrumb*/
+.qs-breadcrumb{
+    @apply flex items-center mt-4 mb-3 gap-[6px];
+}
+.qs-breadcrumb__item{
+    @apply relative flex items-center text-primary-50 last:text-eee;
+    @apply pr-[12px] last:pr-0 text-xs font-[500];
+    @apply after:content-["/"] after:absolute after:right-0 last:after:content-none;
+}
+
+/*qs-panel*/
+.qs-panel{
+    @apply flex-1 w-full rounded-[4px] bg-bg2 px-4 pb-4;
+}
+.qs-panel__head{
+    @apply py-4 mb-4 flex items-center justify-between gap-5;
+    @apply border-b border-white/10
+}
+.qs-panel__head-left{
+    @apply flex items-center gap-[10px]
+}
+.qs-panel__head-icon{
+    @apply w-auto h-[35px]
+}
+.qs-panel__head-title{
+    @apply text-[20px] font-[700]
+}
+.qs-panel__head-right{
+    @apply flex items-center gap-3;
+}
+.qs-panel__head-btn{
+    @apply py-[10px] px-8 rounded-[3px] bg-secondary;
+    @apply text-sm flex items-center justify-center;
+}
+.qs-panel__head-btn--add{
+    @apply bg-secondary text-white;
+}
+.qs-panel__head-btn--options{
+    @apply bg-secondary/20 text-secondary;
+    @apply relative after:content-[""] after:w-[10px] after:h-[10px] after:rounded-full after:bg-red-400;
+    @apply after:absolute after:-right-[4px] after:-top-[4px]
+}
