@@ -84,6 +84,7 @@ body {
 /*qs-panel*/
 .qs-panel{
     @apply flex-1 w-full rounded-[4px] bg-bg2 px-4 pb-4;
+    @apply flex flex-col;
 }
 .qs-panel__head{
     @apply py-4 mb-4 flex items-center justify-between gap-5;
@@ -112,4 +113,41 @@ body {
     @apply bg-secondary/20 text-secondary;
     @apply relative after:content-[""] after:w-[10px] after:h-[10px] after:rounded-full after:bg-red-400;
     @apply after:absolute after:-right-[4px] after:-top-[4px]
+}
+
+/*qs-panel__inner*/
+.qs-panel__inner{
+    @apply flex-1 flex gap-3 h-full;
+}
+.qs-panel__left,
+.qs-panel__right{
+    @apply w-full max-w-[320px] px-3 pb-3;
+    @apply bg-bg3 rounded-[4px];
+}
+.qs-panel__left-head,
+.qs-panel__right-head{
+    @apply py-3 px-2 mb-3 border-b border-white/10;
+}
+.qs-panel__left-title{
+    @apply text-sm text-ccc font-[500];
+}
+
+.qs-menu{
+    @apply w-full flex flex-col gap-5;
+}
+.qs-menu__item{
+    @apply w-full flex flex-col;
+}
+.qs-menu__item .qs-menu{
+    @apply pl-5 mt-5;
+}
+.qs-menu__item-inner{
+    @apply flex items-center gap-[10px] cursor-pointer;
+}
+.qs-menu__item-inner.open{
+    @apply text-secondary
+}
+
+.qs-panel__center{
+    @apply flex-1 h-full;
 }
