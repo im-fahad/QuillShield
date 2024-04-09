@@ -1,17 +1,13 @@
+"use client"
 import Image from "next/image";
-import Icon from '@mdi/react';
-import {
-    mdiChevronDown,
-    mdiChevronRight,
-    mdiCircle,
-    mdiFile,
-    mdiFolder,
-    mdiFolderOutline,
-    mdiMenuDown,
-    mdiMenuRight
-} from '@mdi/js';
 import FolderFiles from "@/components/file-directory/FileDirectoryMenu";
 import Breadcrumb from "@/components/Breadcrumb";
+import Nav from "@/components/Nav";
+import PanelIssueList from "@/components/PanelIssueList";
+import Icon from "@mdi/react";
+import {mdiClose} from "@mdi/js";
+import Editor from '@monaco-editor/react';
+
 export default function Home() {
     const folderFiles = [
         {
@@ -91,87 +87,44 @@ export default function Home() {
             name: "Code Editor",
             link: "/"
         },
-    ]
-    const issueList = [
-        {
-            label: "Total Issues Found",
-            value: 446,
-            type: "total"
-        },
-        {
-            label: "High Severity Issues",
-            value: 108,
-            type: "high"
-        },
-        {
-            label: "Medium Severity Issues",
-            value: 143,
-            type: "medium"
-        },
-        {
-            label: "Low Severity Issues",
-            value: 0,
-            type: "low"
-        },
-        {
-            label: "Informational Issues",
-            value: 68,
-            type: "informational"
-        },
-        {
-            label: "Optimisation Issues",
-            value: 127,
-            type: "optimisation"
-        },
-    ]
+    ];
+    const editorValue = "uint32 lower = 0;\n" +
+        "uint32 upper = nCheckpoints - 1;\n" +
+        "while (upper > lower) {\n" +
+        "    uint32 center = upper - (upper - lower) / 2;  // ceil, avoiding overflow\n" +
+        "    Checkpoint memory cp = checkpoints[account][center];\n" +
+        "    if (cp.fromBlock == blockNumber) {\n" +
+        "        return cp.votes;\n" +
+        "        }\n" +
+        "        uint32 lower = 0;\n" +
+        "        uint32 upper = nCheckpoints - 1;\n" +
+        "        while (upper > lower) {\n" +
+        "            uint32 center = upper - (upper - lower) / 2; // ceil, avoiding overflow\n" +
+        "             Checkpoint memory cp = checkpoints[account][center];\n" +
+        "             if (cp.fromBlock == blockNumber) {\n" +
+        "                return cp.votes;\n" +
+        "                } uint32 lower = 0;\n" +
+        "                uint32 upper = nCheckpoints - 1;\n" +
+        "                while (upper > lower) {\n" +
+        "                    uint32 center = upper - (upper - lower) / 2; // ceil, avoiding overflow\n" +
+        "                    Checkpoint memory cp = checkpoints[account][center];\n" +
+        "                    if (cp.fromBlock == blockNumber) {\n" +
+        "                        return cp.votes;\n" +
+        "                        } while (upper > lower) {\n" +
+        "                            uint32 lower = 0;\n" +
+        "                            uint32 upper = nCheckpoints - 1;\n" +
+        "                            while (upper > lower) {\n" +
+        "                                uint32 center = upper - (upper - lower) / 2; // ceil, avoiding overflow\n" +
+        "                                Checkpoint memory cp = checkpoints[account][center];\n" +
+        "                                if (cp.fromBlock == blockNumber) {\n" +
+        "                                    return cp.votes;\n" +
+        "                                    }";
+    
     return (
         <main className="qs-main">
             <div className="qs-main__inner">
-                <nav className="qs-nav">
-                    <div className="qs-nav__item">
-                        <a href="/" className="qs-nav__logo">
-                            <Image className="qs-nav__logo-img" src="/images/QuillShieldLogo.svg" alt="Logo" width={128}
-                                   height={48}/>
-                        </a>
-                    </div>
-                    <div className="qs-nav__item qs-nav__item--menu">
-                        <ul className="qs-nav-menu">
-                            <li className="qs-nav-menu__item">
-                                <a href="/" className="qs-nav-menu__item-link active">
-                                    AI Audit
-                                </a>
-                            </li>
-                            <li className="qs-nav__menu-item">
-                                <a href="/" className="qs-nav-menu__item-link">
-                                    Manual Audit
-                                </a>
-                            </li>
-                            <li className="qs-nav__menu-item">
-                                <a href="/" className="qs-nav-menu__item-link">
-                                    RedTeam
-                                </a>
-                            </li>
-                            <li className="qs-nav__menu-item">
-                                <a href="/" className="qs-nav-menu__item-link">
-                                    Monitor
-                                </a>
-                            </li>
-                            <li className="qs-nav__menu-item">
-                                <a href="/" className="qs-nav-menu__item-link">
-                                    Incident Response
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="qs-nav__item">
-                        <div className="qs-nav__user">
-                            <Image className="qs-nav__user-avatar" src="/images/DP.svg" alt="Logo" width={28}
-                                   height={28}/>
-                            <h1 className="qs-nav__user-name">Johhny Doe</h1>
-                            <Icon className="qs-nav__user-icon" path={mdiChevronDown}/>
-                        </div>
-                    </div>
-                </nav>
+                <Nav/>
+                
                 <Breadcrumb data={breadcrumbs}/>
                 
                 <div className="qs-panel">
@@ -196,8 +149,28 @@ export default function Home() {
                             <FolderFiles data={folderFiles}/>
                         </div>
                         <div className="qs-panel__center">
-                            <div className="qs-panel__center-head">
-                                <h2 className="qs-panel__center-title">Folder & Files</h2>
+                            <ul className="panel-tab">
+                                <li className="panel-tab__item active">
+                                    Example File 1
+                                    <Icon className="panel-tab__item-icon" path={mdiClose} size={.8}/>
+                                </li>
+                                <li className="panel-tab__item">
+                                    Example Folder
+                                    <Icon className="panel-tab__item-icon" path={mdiClose} size={.8}/>
+                                </li>
+                                <li className="panel-tab__item">
+                                    File 123
+                                    <Icon className="panel-tab__item-icon" path={mdiClose} size={.8}/>
+                                </li>
+                                <li className="panel-tab__item">
+                                    Sample File
+                                    <Icon className="panel-tab__item-icon" path={mdiClose} size={.8}/>
+                                </li>
+                            </ul>
+                            <div className="panel-editor">
+                                <Editor height="100%"
+                                        defaultLanguage="sol"
+                                        defaultValue={editorValue} theme="hc-black"/>
                             </div>
                         </div>
                         <div className="qs-panel__right">
@@ -206,36 +179,8 @@ export default function Home() {
                                     {name: "Count of Issues", link: "/"},
                                 ]}/>
                             </div>
-                            <div className="qs-issue-list">
-                                <div className="qs-issue-list__tab">
-                                    <button className="qs-issue-list__tab-item active">Current File</button>
-                                    <button className="qs-issue-list__tab-item">Full Project</button>
-                                </div>
-                                <ul className="qs-issues">
-                                    {issueList.map((item, key) => (
-                                        <li className={`qs-issues__item ${item.type}`} key={key}>
-                                            <div className="qs-issues__item-left">
-                                                <Icon path={mdiCircle} size={.6} className="qs-issues__item-circle"/>
-                                                <h1 className="qs-issues__item-value">{item.value}</h1>
-                                            </div>
-                                            <div className="qs-issues__item-right">
-                                                <h2 className="qs-issues__item-label">
-                                                    {item.label}
-                                                </h2>
-                                                <Icon path={mdiChevronRight} size={1.8}/>
-                                            </div>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <div className="qs-issue-list__footer">
-                                    <div className="flex items-center">
-                                        <input id="checked-checkbox" type="checkbox"
-                                               className="w-[18px] h-[18px] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0 cursor-pointer"/>
-                                        <label htmlFor="checked-checkbox"
-                                               className="ms-2 text-sm font-medium cursor-pointer">Exclude Dependencies</label>
-                                    </div>
-                                </div>
-                            </div>
+                            
+                            <PanelIssueList/>
                         </div>
                     </div>
                 </div>
