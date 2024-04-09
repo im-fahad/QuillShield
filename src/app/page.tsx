@@ -230,9 +230,9 @@ export default function Home() {
                                 <div className="qs-issue-list__footer">
                                     <div className="flex items-center">
                                         <input id="checked-checkbox" type="checkbox"
-                                               className="w-[18px] h-[18px] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0"/>
+                                               className="w-[18px] h-[18px] text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-0 cursor-pointer"/>
                                         <label htmlFor="checked-checkbox"
-                                               className="ms-2 text-sm font-medium">Exclude Dependencies</label>
+                                               className="ms-2 text-sm font-medium cursor-pointer">Exclude Dependencies</label>
                                     </div>
                                 </div>
                             </div>

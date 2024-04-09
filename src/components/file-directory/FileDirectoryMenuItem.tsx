@@ -27,10 +27,9 @@ export default function FileDirectoryMenuItem(props:PropsTypes) {
                                 <Icon className="qs-menu__item-icon" path={mdiFolder} size={1}/>
                             </>
                         )}
-                    
                     </>
                 ) : (
-                    <Icon className="qs-menu__item-icon" path={mdiFile} size={1}/>
+                    <Icon className={`qs-menu__item-icon ${data.type}`} path={mdiFile} size={1}/>
                 )}
                 {data.name}
             </div>

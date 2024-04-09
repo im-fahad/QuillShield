@@ -130,6 +130,9 @@
 .qs-menu__item-inner.open{
     @apply text-secondary
 }
+.qs-menu__item-icon.file{
+    @apply ml-8
+}
 
 .qs-panel__right-breadcrumb{
     @apply my-0;
@@ -163,7 +166,7 @@
     @apply flex flex-col gap-2;
 }
 .qs-issues__item{
-    @apply flex items-center gap-2 px-5 py-[10px] bg-bg2 rounded-[4px];
+    @apply flex items-center gap-3 px-5 py-[10px] bg-bg2 rounded-[4px] cursor-pointer;
 }
 .qs-issues__item-left{
     @apply flex items-center gap-3 border-r border-white/10 min-w-[40%];
@@ -196,5 +199,5 @@
     @apply text-cyan-500
 }
 .qs-issue-list__footer{
-    @apply border-t border-white/10 pt-5 mt-1;
+    @apply border-t border-white/10 py-5 mt-1;
 }
