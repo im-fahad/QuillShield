@@ -104,8 +104,9 @@
 }
 .qs-panel__left,
 .qs-panel__right{
-    @apply w-full max-w-[320px] px-3 pb-3;
+    @apply w-full min-w-[320px] max-w-[320px] px-3 pb-3;
     @apply bg-bg3 rounded-[4px];
+    @apply transition-opacity ease-in-out delay-150 duration-300
 }
 .qs-panel__left-head,
 .qs-panel__right-head{
@@ -218,5 +219,16 @@
     @apply hover:text-red-500 hover:scale-125 transition-all;
 }
 .panel-editor{
-    @apply flex-1 pt-2 bg-black;
+    @apply flex-1 pt-2 bg-black rounded-bl-[4px] rounded-br-[4px];
+    @apply relative;
+}
+.panel-editor__toggle{
+    @apply w-5 h-5 flex items-center justify-center bg-secondary rounded-[4px];
+    @apply absolute;
+}
+.panel-editor__toggle--left{
+    @apply -left-2 bottom-5 z-10
+}
+.panel-editor__toggle--right{
+    @apply -right-2 bottom-5 z-10
 }

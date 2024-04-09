@@ -5,10 +5,16 @@ import Breadcrumb from "@/components/Breadcrumb";
 import Nav from "@/components/Nav";
 import PanelIssueList from "@/components/PanelIssueList";
 import Icon from "@mdi/react";
-import {mdiClose} from "@mdi/js";
+import {mdiClose, mdiFormatHorizontalAlignLeft, mdiFormatHorizontalAlignRight} from "@mdi/js";
 import Editor from '@monaco-editor/react';
+import {useEffect, useState} from "react";
+import PanelLeft from "@/components/PanelLeft";
+import PanelRight from "@/components/PanelRight";
 
 export default function Home() {
+    const [isOpenLeftBar, setIsOpenLeftBar] = useState<boolean>(true);
+    const [isOpenRightBar, setIsOpenRightBar] = useState<boolean>(true);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const folderFiles = [
         {
             name: "Example Folder",
@@ -120,6 +126,13 @@ export default function Home() {
         "                                    return cp.votes;\n" +
         "                                    }";
     
+    useEffect(() => {
+        setIsLoading(true)
+        setTimeout(()=>{
+            setIsLoading(false)
+        },500)
+    }, [isOpenLeftBar,isOpenRightBar]);
+    
     return (
         <main className="qs-main">
             <div className="qs-main__inner">
@@ -141,13 +154,9 @@ export default function Home() {
                     </div>
                     
                     <div className="qs-panel__inner">
-                        <div className="qs-panel__left">
-                            <div className="qs-panel__left-head">
-                                <h2 className="qs-panel__left-title">Folder & Files</h2>
-                            </div>
-                            
-                            <FolderFiles data={folderFiles}/>
-                        </div>
+                        {isOpenLeftBar ? (
+                           <PanelLeft/>
+                        ) : <></>}
                         <div className="qs-panel__center">
                             <ul className="panel-tab">
                                 <li className="panel-tab__item active">
@@ -168,20 +177,25 @@ export default function Home() {
                                 </li>
                             </ul>
                             <div className="panel-editor">
-                                <Editor height="100%"
+                                <button className="panel-editor__toggle panel-editor__toggle--left"
+                                        onClick={() => setIsOpenLeftBar(!isOpenLeftBar)}>
+                                    <Icon path={mdiFormatHorizontalAlignLeft} size={.7}/>
+                                </button>
+                                <button className="panel-editor__toggle panel-editor__toggle--right"
+                                        onClick={() => setIsOpenRightBar(!isOpenRightBar)}>
+                                    <Icon path={mdiFormatHorizontalAlignRight} size={.7}/>
+                                </button>
+                                
+                                {!isLoading ? (
+                                <Editor height="77vh" width="100%"
                                         defaultLanguage="sol"
                                         defaultValue={editorValue} theme="hc-black"/>
+                                ):<></>}
                             </div>
                         </div>
-                        <div className="qs-panel__right">
-                            <div className="qs-panel__right-head">
-                                <Breadcrumb className="qs-panel__right-breadcrumb" data={[
-                                    {name: "Count of Issues", link: "/"},
-                                ]}/>
-                            </div>
-                            
-                            <PanelIssueList/>
-                        </div>
+                        {isOpenRightBar ? (
+                            <PanelRight/>
+                        ) : <></>}
                     </div>
                 </div>
             </div>
