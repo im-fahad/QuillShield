@@ -3,7 +3,11 @@ import {
     mdiChevronRight,
     mdiCircle,
 } from '@mdi/js';
-export default function PanelIssueList() {
+
+interface Types{
+    onSelect:(e:any)=>void
+}
+export default function PanelIssueList({onSelect}:Types) {
     const issueList = [
         {
             label: "Total Issues Found",
@@ -44,7 +48,7 @@ export default function PanelIssueList() {
             </div>
             <ul className="qs-issues">
                 {issueList.map((item, key) => (
-                    <li className={`qs-issues__item ${item.type}`} key={key}>
+                    <li className={`qs-issues__item ${item.type}`} key={key} onClick={()=>onSelect(item)}>
                         <div className="qs-issues__item-left">
                             <Icon path={mdiCircle} size={.6} className="qs-issues__item-circle"/>
                             <h1 className="qs-issues__item-value">{item.value}</h1>

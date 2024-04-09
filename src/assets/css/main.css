@@ -1,5 +1,6 @@
 @import "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css";
 @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,225 +11,287 @@
     }
 }
 
-.qs-main{
+.qs-main {
     @apply w-full h-auto;
 }
-.qs-main__inner{
+
+.qs-main__inner {
     @apply h-full min-h-screen p-3 flex flex-col;
 }
 
-.qs-nav{
+.qs-nav {
     @apply w-full bg-bg2 rounded-[4px] flex items-center justify-between;
 }
-.qs-nav__item{
+
+.qs-nav__item {
     @apply px-5 py-3 border-r border-white/10 last:border-none;
 }
-.qs-nav__item--menu{
+
+.qs-nav__item--menu {
     @apply flex-1
 }
 
-.qs-nav-menu{
+.qs-nav-menu {
     @apply w-full inline-flex items-center justify-end gap-8;
 }
-.qs-nav-menu__item-link{
+
+.qs-nav-menu__item-link {
     @apply text-sm text-primary-50 relative;
     @apply flex items-center justify-center;
 }
-.qs-nav-menu__item-link.active{
+
+.qs-nav-menu__item-link.active {
     @apply text-secondary;
 }
-.qs-nav-menu__item-link:after{
+
+.qs-nav-menu__item-link:after {
     @apply h-[2px] w-1/2 rounded bg-transparent;
     @apply absolute -bottom-[6px];
 }
-.active.qs-nav-menu__item-link:after{
+
+.active.qs-nav-menu__item-link:after {
     @apply content-[""] bg-secondary;
 }
-.qs-nav__user{
+
+.qs-nav__user {
     @apply flex items-center justify-center gap-3;
 }
-.qs-nav__user-name{
+
+.qs-nav__user-name {
     @apply whitespace-nowrap text-sm font-[600]
 }
-.qs-nav__user-icon{
+
+.qs-nav__user-icon {
     @apply size-7 text-primary-50 ml-[14px]
 }
 
 /*qs-breadcrumb*/
-.qs-breadcrumb{
+.qs-breadcrumb {
     @apply flex items-center mt-4 mb-3 gap-[6px];
 }
-.qs-breadcrumb__item{
+
+.qs-breadcrumb__item {
     @apply relative flex items-center text-primary-50 last:text-eee;
     @apply pr-[12px] last:pr-0 text-xs font-[500];
     @apply after:content-["/"] after:absolute after:right-0 last:after:content-none;
 }
 
 /*qs-panel*/
-.qs-panel{
+.qs-panel {
     @apply flex-1 w-full rounded-[4px] bg-bg2 px-4 pb-4;
     @apply flex flex-col;
 }
-.qs-panel__head{
+
+.qs-panel__head {
     @apply py-4 mb-4 flex items-center justify-between gap-5;
     @apply border-b border-white/10
 }
-.qs-panel__head-left{
+
+.qs-panel__head-left {
     @apply flex items-center gap-[10px]
 }
-.qs-panel__head-icon{
+
+.qs-panel__head-icon {
     @apply w-auto h-[35px]
 }
-.qs-panel__head-title{
+
+.qs-panel__head-title {
     @apply text-[20px] font-[700]
 }
-.qs-panel__head-right{
+
+.qs-panel__head-right {
     @apply flex items-center gap-3;
 }
-.qs-panel__head-btn{
+
+.qs-panel__head-btn {
     @apply py-[10px] px-8 rounded-[3px] bg-secondary;
     @apply text-sm flex items-center justify-center;
 }
-.qs-panel__head-btn--add{
+
+.qs-panel__head-btn--add {
     @apply bg-secondary text-white;
 }
-.qs-panel__head-btn--options{
+
+.qs-panel__head-btn--options {
     @apply bg-secondary/20 text-secondary;
     @apply relative after:content-[""] after:w-[10px] after:h-[10px] after:rounded-full after:bg-red-400;
     @apply after:absolute after:-right-[4px] after:-top-[4px]
 }
 
 /*qs-panel__inner*/
-.qs-panel__inner{
+.qs-panel__inner {
     @apply flex-1 flex gap-3 h-full;
 }
+
 .qs-panel__left,
-.qs-panel__right{
+.qs-panel__right {
     @apply w-full min-w-[320px] max-w-[320px] px-3 pb-3;
     @apply bg-bg3 rounded-[4px];
     @apply transition-opacity ease-in-out delay-150 duration-300
 }
+
 .qs-panel__left-head,
-.qs-panel__right-head{
+.qs-panel__right-head {
     @apply py-3 px-2 mb-3 border-b border-white/10;
 }
-.qs-panel__left-title{
+
+.qs-panel__left-title {
     @apply text-sm text-ccc font-[500];
 }
 
-.qs-menu{
+.qs-menu {
     @apply w-full flex flex-col gap-5;
 }
-.qs-menu__item{
+
+.qs-menu__item {
     @apply w-full flex flex-col;
 }
-.qs-menu__item .qs-menu{
+
+.qs-menu__item .qs-menu {
     @apply pl-5 mt-5;
 }
-.qs-menu__item-inner{
+
+.qs-menu__item-inner {
     @apply flex items-center gap-[10px] cursor-pointer text-sm;
 }
-.qs-menu__item-inner.open{
+
+.qs-menu__item-inner.open {
     @apply text-secondary
 }
-.qs-menu__item-icon.file{
+
+.qs-menu__item-icon.file {
     @apply ml-8
 }
 
-.qs-panel__right-breadcrumb{
+.qs-panel__right-breadcrumb {
     @apply my-0;
 }
 
-.qs-panel__right-breadcrumb .qs-breadcrumb__item{
+.qs-panel__right-breadcrumb .qs-breadcrumb__item {
     @apply text-sm last:text-ccc;
 }
 
-.qs-panel__center{
+.qs-panel__center {
     @apply flex-1 flex flex-col;
 }
 
 /*qs-issue-list*/
-.qs-issue-list{
+.qs-issue-list {
     @apply w-full flex flex-col gap-5 pt-2;
 }
-.qs-issue-list__tab{
+
+.qs-issue-list__tab {
     @apply p-1 rounded-[3px] bg-bg2 flex items-center justify-between gap-1;
 }
-.qs-issue-list__tab-item{
+
+.qs-issue-list__tab-item {
     @apply flex-1 flex items-center justify-center px-[33px] py-[10px] text-sm text-primary-50 rounded-[3px];
     @apply hover:text-white transition;
 }
-.qs-issue-list__tab-item.active{
+
+.qs-issue-list__tab-item.active {
     @apply bg-secondary text-white;
 }
 
+.qs-issue-list__selected {
+    @apply p-1 rounded-[3px] bg-bg2 flex items-center px-2;
+}
+
+.qs-issue-list__selected-value {
+    @apply flex items-center justify-center flex-1 gap-3 text-[28px];
+    @apply border-r border-white/10 text-eee;
+}
+
+.qs-issue-list__selected-label {
+    @apply flex items-center justify-center flex-1 text-sm text-primary-50;
+}
+
 /*qs-issues*/
-.qs-issues{
+.qs-issues {
     @apply flex flex-col gap-2;
 }
-.qs-issues__item{
+
+.qs-issues__item {
     @apply flex items-center gap-3 px-5 py-[10px] bg-bg2 rounded-[4px] cursor-pointer;
 }
-.qs-issues__item-left{
+
+.qs-issues__item-left {
     @apply flex items-center gap-3 border-r border-white/10 min-w-[40%];
 }
-.qs-issues__item-right{
+
+.qs-issues__item-right {
     @apply flex items-center gap-3;
 }
-.qs-issues__item-value{
+
+.qs-issues__item-value {
     @apply text-[28px] font-medium text-eee;
 }
-.qs-issues__item-label{
+
+.qs-issues__item-label {
     @apply text-sm text-aaa;
 }
-.total .qs-issues__item-circle{
+
+.total .qs-issues__item-circle {
     @apply text-blue-500
 }
-.high .qs-issues__item-circle{
+
+.high .qs-issues__item-circle {
     @apply text-red-500
 }
-.medium .qs-issues__item-circle{
+
+.medium .qs-issues__item-circle {
     @apply text-yellow-500
 }
-.low .qs-issues__item-circle{
+
+.low .qs-issues__item-circle {
     @apply text-green-500
 }
-.informational .qs-issues__item-circle{
+
+.informational .qs-issues__item-circle {
     @apply text-purple-500
 }
-.optimisation .qs-issues__item-circle{
+
+.optimisation .qs-issues__item-circle {
     @apply text-cyan-500
 }
-.qs-issue-list__footer{
+
+.qs-issue-list__footer {
     @apply border-t border-white/10 py-5 mt-1;
 }
 
 /*panel-tab*/
-.panel-tab{
+.panel-tab {
     @apply flex items-center bg-[#1E232B] rounded-tl-[4px] rounded-tr-[4px] overflow-x-scroll;
 }
-.panel-tab__item{
+
+.panel-tab__item {
     @apply h-[50px] flex items-center justify-between gap-4 px-5 py-[10px];
     @apply border-r border-white/5 text-sm text-primary-50 cursor-pointer;
     @apply hover:bg-secondary/10 hover:text-secondary transition-all;
 }
-.panel-tab__item.active{
+
+.panel-tab__item.active {
     @apply bg-secondary rounded-tl-[4px] rounded-tr-[4px] text-white border-secondary;
 }
-.panel-tab__item-icon{
+
+.panel-tab__item-icon {
     @apply hover:text-red-500 hover:scale-125 transition-all;
 }
-.panel-editor{
+
+.panel-editor {
     @apply flex-1 pt-2 bg-black rounded-bl-[4px] rounded-br-[4px];
     @apply relative;
 }
-.panel-editor__toggle{
+
+.panel-editor__toggle {
     @apply w-5 h-5 flex items-center justify-center bg-secondary rounded-[4px];
     @apply absolute;
 }
-.panel-editor__toggle--left{
+
+.panel-editor__toggle--left {
     @apply -left-2 bottom-5 z-10
 }
-.panel-editor__toggle--right{
+
+.panel-editor__toggle--right {
     @apply -right-2 bottom-5 z-10
 }
