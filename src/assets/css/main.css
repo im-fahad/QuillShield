@@ -1,31 +1,14 @@
 @import "https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css";
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 255, 255, 255;
-        --background-start-rgb: 0, 0, 0;
-        --background-end-rgb: 0, 0, 0;
+@layer base {
+    body {
+        @apply bg-bg1 text-ccc !font-Lato font-[500];
     }
 }
-
-body {
-    @apply bg-bg1 text-ccc;
-}
-
-/*@layer utilities {*/
-/*    .text-balance {*/
-/*        text-wrap: balance;*/
-/*    }*/
-/*}*/
 
 .qs-main{
     @apply w-full h-auto;
@@ -142,12 +125,76 @@ body {
     @apply pl-5 mt-5;
 }
 .qs-menu__item-inner{
-    @apply flex items-center gap-[10px] cursor-pointer;
+    @apply flex items-center gap-[10px] cursor-pointer text-sm;
 }
 .qs-menu__item-inner.open{
     @apply text-secondary
 }
 
+.qs-panel__right-breadcrumb{
+    @apply my-0;
+}
+
+.qs-panel__right-breadcrumb .qs-breadcrumb__item{
+    @apply text-sm last:text-ccc;
+}
+
 .qs-panel__center{
     @apply flex-1 h-full;
+}
+
+/*qs-issue-list*/
+.qs-issue-list{
+    @apply w-full flex flex-col gap-5 pt-2;
+}
+.qs-issue-list__tab{
+    @apply p-1 rounded-[3px] bg-bg2 flex items-center justify-between gap-1;
+}
+.qs-issue-list__tab-item{
+    @apply flex-1 flex items-center justify-center px-[33px] py-[10px] text-sm text-primary-50 rounded-[3px];
+    @apply hover:text-white transition;
+}
+.qs-issue-list__tab-item.active{
+    @apply bg-secondary text-white;
+}
+
+/*qs-issues*/
+.qs-issues{
+    @apply flex flex-col gap-2;
+}
+.qs-issues__item{
+    @apply flex items-center gap-2 px-5 py-[10px] bg-bg2 rounded-[4px];
+}
+.qs-issues__item-left{
+    @apply flex items-center gap-3 border-r border-white/10 min-w-[40%];
+}
+.qs-issues__item-right{
+    @apply flex items-center gap-3;
+}
+.qs-issues__item-value{
+    @apply text-[28px] font-medium text-eee;
+}
+.qs-issues__item-label{
+    @apply text-sm text-aaa;
+}
+.total .qs-issues__item-circle{
+    @apply text-blue-500
+}
+.high .qs-issues__item-circle{
+    @apply text-red-500
+}
+.medium .qs-issues__item-circle{
+    @apply text-yellow-500
+}
+.low .qs-issues__item-circle{
+    @apply text-green-500
+}
+.informational .qs-issues__item-circle{
+    @apply text-purple-500
+}
+.optimisation .qs-issues__item-circle{
+    @apply text-cyan-500
+}
+.qs-issue-list__footer{
+    @apply border-t border-white/10 pt-5 mt-1;
 }

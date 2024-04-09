@@ -18,6 +18,10 @@ const config: Config = {
                 icon2: "-1px -1px 8px 0px #5554D929"
                 
             },
+            fontFamily: {
+                Lato: ["Lato", "sans-serif"],
+                mdi:"Material Design Icons"
+            },
             colors: {
                 primary: {
                     DEFAULT: '#0D0F11',
@@ -47,9 +51,9 @@ const config: Config = {
                     900: '#000F1F',
                     950: '#000103'
                 },
-                bg1:"#0D0F11",
-                bg2:"#191D23",
-                bg3:"#13161A",
+                bg1: "#0D0F11",
+                bg2: "#191D23",
+                bg3: "#13161A",
                 aaa: "#AAAAAA",
                 eee: "#EEEEEE",
                 ccc: "#CCCCCC",
